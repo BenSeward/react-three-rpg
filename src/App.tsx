@@ -8,21 +8,18 @@ import Player from "./Player";
 
 function App() {
   return (
-    <>
-      <div style={{ width: "100%", height: "500px" }}>
-        <Canvas>
-          <Sky sunPosition={new Vector3(100, 10, 100)} />
-          <ambientLight intensity={0.3} />
-          <pointLight castShadow intensity={0.8} position={[100, 100, 100]} />
-          <Physics gravity={[0, -30, 0]}>
-            <Ground />
-            <Player />
-          </Physics>
-        </Canvas>
-      </div>
+    <div style={{ width: "100%", height: "100%" }}>
+      <Canvas>
+        <Sky sunPosition={new Vector3(1000, 10, 1000)} />
+        <ambientLight intensity={0.3} />
+        <pointLight castShadow intensity={0.8} position={[100, 100, 100]} />
 
-      <h1>Hello</h1>
-    </>
+        <Physics gravity={[0, -30, 0]}>
+          <Ground />
+          <Player />
+        </Physics>
+      </Canvas>
+    </div>
   );
 }
 

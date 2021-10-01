@@ -11,11 +11,11 @@ const Ground = (props: any) => {
   const texture = new TextureLoader().load(grass);
   texture.wrapS = RepeatWrapping;
   texture.wrapT = RepeatWrapping;
-  texture.repeat.set(24, 24);
+  texture.repeat.set(240, 240);
 
   return (
     <mesh ref={ref} receiveShadow>
-      <planeBufferGeometry attach="geometry" args={[100, 100]} />
+      <planeBufferGeometry attach="geometry" args={[1000, 1000]} />
       <meshStandardMaterial map={texture} attach="material" color="green" />
     </mesh>
   );
