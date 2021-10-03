@@ -6,8 +6,8 @@ source: https://sketchfab.com/models/0d62f4d3676545c88ec8523213c055dd
 title: Minecraft Diamond Axe
 */
 
-import React, { useRef } from "react"
-import { useGLTF, useFBX } from "@react-three/drei"
+import { useRef } from "react"
+import { useGLTF } from "@react-three/drei"
 import modelURL from "./assets/axe.glb"
 
 export default function Model(props: any) {

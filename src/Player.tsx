@@ -5,7 +5,6 @@ import { Vector3 } from "three";
 import usePlayerControls from "./usePlayerControls";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import Axe from "./Axe";
-import Walking from "./Walking";
 
 const SPEED = 5;
 
@@ -59,7 +58,6 @@ export const Player = (props: any) => {
         <PerspectiveCamera position={[0, 5,5]} makeDefault />
         <OrbitControls enableZoom={false} enablePan={false} />
         <Axe />
-        {/* <Walking /> */}
       </group>
     </>
   );
