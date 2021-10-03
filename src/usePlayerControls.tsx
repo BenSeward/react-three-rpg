@@ -9,8 +9,6 @@ const moveFieldByKey = (key: string) => {
     Space: "jump",
   };
 
-  console.log(keys[key])
-
   return keys[key];
 };
 

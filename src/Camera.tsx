@@ -1,23 +1,27 @@
-import React, { useRef, useEffect, useLayoutEffect } from 'react';
-import { useThree } from "@react-three/fiber";
+import React, { useRef, useEffect, useLayoutEffect } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
+import { OrthographicCamera } from "@react-three/drei";
 
 const Camera = (props: any) => {
   const ref = useRef<any>();
-  const { set, size } = useThree();
+  const set = useThree((state) => state.set);
 
-  useLayoutEffect(() => {
-    if (ref.current) {
-      ref.current.aspect = size.width / size.height;
-      ref.current.updateProjectionMatrix()
+  // Make the camera known to the system
+  useEffect(() => void set({ camera: ref.current }), []);
+  // Update it every frame
+  useFrame(() => {
+    if (!ref?.current) {
+      return;
     }
-  }, [size, props]);
 
-  useEffect(() => {
-    set({ camera: ref.current });
-    // eslint-disable-next-line
-  }, []);
-
-  return <perspectiveCamera ref={ref} {...props} />;
+    ref.current.updateMatrixWorld();
+  });
+  return (
+    <>
+      <OrthographicCamera position={[0, 5, 5]} />
+      <perspectiveCamera ref={ref} {...props} />
+    </>
+  );
 };
 
 export default Camera;
