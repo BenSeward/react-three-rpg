@@ -1,6 +1,6 @@
 import { usePlane } from "@react-three/cannon";
 import { RepeatWrapping, TextureLoader } from "three";
-import grass from "./grass.jpg";
+import grass from "./assets/grass.jpg";
 
 const Ground = (props: any) => {
   const [ref] = usePlane(() => ({

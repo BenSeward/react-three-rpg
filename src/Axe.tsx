@@ -7,12 +7,12 @@ title: Minecraft Diamond Axe
 */
 
 import React, { useRef } from "react"
-import { useGLTF } from "@react-three/drei"
-import axeUrl from "./axe.glb"
+import { useGLTF, useFBX } from "@react-three/drei"
+import modelURL from "./assets/axe.glb"
 
 export default function Model(props: any) {
   const group = useRef()
-  const { nodes, materials } = useGLTF(axeUrl) as any;
+  const { nodes, materials } = useGLTF(modelURL) as any;
   return (
     <group ref={group} dispose={null} {...props}>
       <group rotation={[0, Math.PI / 1.8, -0.3]} scale={1}>

@@ -1,35 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useSphere } from "@react-three/cannon";
 import { useThree, useFrame } from "@react-three/fiber";
 import { Vector3 } from "three";
 import usePlayerControls from "./usePlayerControls";
-import { OrbitControls, PerspectiveCamera, TrackballControls, TransformControls } from "@react-three/drei";
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import Axe from "./Axe";
+import Walking from "./Walking";
 
 const SPEED = 5;
-
-const CameraControls = () => {
-  // Get a reference to the Three.js Camera, and the canvas html element.
-  // We need these to setup the OrbitControls component.
-  // https://threejs.org/docs/#examples/en/controls/OrbitControls
-  const {
-    camera,
-    gl: { domElement },
-  } = useThree();
-  // Ref to the controls, so that we can update them on every frame using useFrame
-  const controls = useRef<any>();
-
-  useFrame((state) => {
-    if (!controls.current) {
-      return;
-    }
-    console.log(controls.current);
-
-    controls.current.update();
-  });
-
-  return <OrbitControls ref={controls} args={[camera, domElement]} />;
-};
 
 export const Player = (props: any) => {
   const { moveForward, moveBackward, moveLeft, moveRight, jump } = usePlayerControls();
@@ -79,8 +57,9 @@ export const Player = (props: any) => {
     <>
       <group ref={ref}>
         <PerspectiveCamera position={[0, 5,5]} makeDefault />
-        <OrbitControls />
+        <OrbitControls enableZoom={false} enablePan={false} />
         <Axe />
+        {/* <Walking /> */}
       </group>
     </>
   );
